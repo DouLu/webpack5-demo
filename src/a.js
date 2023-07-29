@@ -22,4 +22,4 @@ const arrow = (arg) => {
   );
 };
 
-arrow("test babel loader");
+arrow("no hot replace");
