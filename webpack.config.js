@@ -1,5 +1,7 @@
 const path = require("path");
-
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const HtmlWbepackPlugin = require("html-webpack-plugin");
 module.exports = {
   // 基础目录，不配置则默认项目的根目录。绝对路径
   context: path.resolve(__dirname, "src"),
@@ -37,10 +39,26 @@ module.exports = {
           options: {
             limit: 1024 * 20,
             name: "[name]-[contenthash:8].[ext]",
-            publicPath: "./dist",
+            publicPath: "./dist/",
           },
         },
       },
     ],
   },
+  plugins: [
+    new CleanWebpackPlugin(),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "src/img/"),
+          to: path.resolve(__dirname, "dist/image/"),
+        },
+      ],
+    }),
+    new HtmlWbepackPlugin({
+      title: "webpack-demo",
+      // filename:'home.html',
+      template: path.resolve(__dirname, "src/index.ejs"),
+    }),
+  ],
 };
