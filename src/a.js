@@ -1,7 +1,7 @@
-import { year } from "./b";
+import { year } from "./b.js";
 import "./a.scss";
 import "./b.css";
-
+import { random } from "lodash";
 console.log(
   "%c [ year ]-2",
   "font-size:13px; background:pink; color:#bf2c9f;",
@@ -26,3 +26,5 @@ const arrow = (arg) => {
 arrow("no hot replace");
 
 console.log("env----", NODE_ENV);
+
+console.log("split chunks----", random(0, 10));

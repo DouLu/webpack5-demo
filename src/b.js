@@ -1,5 +1,6 @@
 const year = "2023";
-export { year };
+const desc = "test desc";
+export { year, desc };
 
 import img from "./img/img.png";
 const Img = document.createElement("img");
