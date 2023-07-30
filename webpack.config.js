@@ -2,6 +2,11 @@ const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWbepackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const autoprefixer = require("autoprefixer");
+console.log("process env-----", process.env.NODE_ENV);
+
 module.exports = {
   // 基础目录，不配置则默认项目的根目录。绝对路径
   context: path.resolve(__dirname, "src"),
@@ -16,7 +21,7 @@ module.exports = {
     // assetModuleFilename: "static/[hash:8][ext][query]",
   },
   devtool: "eval-cheap-module-source-map", // development环境
-  devtool: "hidden-source-map", // production环境
+  // devtool: "hidden-source-map", // production环境
   devServer: {
     historyApiFallback: true,
     publicPath: "/dist/",
@@ -27,9 +32,18 @@ module.exports = {
   },
   module: {
     rules: [
+      // {
+      //   test: /\.css$/,
+      //   use: ["style-loader", "css-loader"],
+      // },
       {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        test: /\.(scss|css)$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          // "post-loader",
+          "sass-loader",
+        ],
       },
       {
         test: /\.js$/,
@@ -65,6 +79,8 @@ module.exports = {
     ],
   },
   plugins: [
+    // 如果"development"不用json stringify转换，插件会将其看成是一个变量名
+    new webpack.DefinePlugin({ NODE_ENV: JSON.stringify("development") }),
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
@@ -77,7 +93,15 @@ module.exports = {
     new HtmlWbepackPlugin({
       title: "webpack-demo",
       // filename:'home.html',
-      // template: path.resolve(__dirname, "src/index.ejs"),
+      template: path.resolve(__dirname, "src/index.ejs"),
+    }),
+    // 已废弃
+    // autoprefixer({
+    //   browsers: ["chrome>=18"],
+    // }),
+    new MiniCssExtractPlugin({
+      filename: "[name]-[contenthash:8].css",
+      chunkFilename: "[id].css",
     }),
   ],
   mode: "none",

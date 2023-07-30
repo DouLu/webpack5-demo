@@ -1,4 +1,5 @@
 import { year } from "./b";
+import "./a.scss";
 import "./b.css";
 
 console.log(
@@ -23,3 +24,5 @@ const arrow = (arg) => {
 };
 
 arrow("no hot replace");
+
+console.log("env----", NODE_ENV);
