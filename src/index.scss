@@ -1,0 +1,17 @@
+html,
+body {
+  background-color: #141b2d;
+  margin: 0;
+}
+html,
+body,
+#root,
+#root > section {
+  height: 100%;
+  overflow: hidden;
+}
+
+#error-page {
+  color: #fff;
+  text-align: center;
+}
