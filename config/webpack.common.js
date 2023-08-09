@@ -1,11 +1,14 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+
 module.exports = {
   entry: path.resolve(__dirname, "../src/index"),
   output: {
     path: path.resolve(__dirname, "../dist/"),
-    filename: "bundle.js",
+    // filename: "bundle.js",
+    filename: "[name]-[fullhash:8].js",
   },
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
@@ -40,6 +43,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new BundleAnalyzerPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "../public/index.html"),
     }),
