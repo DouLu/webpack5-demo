@@ -7,6 +7,9 @@ learning webpack5
 1. 用 sass 编写样式
 2. ~~先用[flow](https://flow.nodejs.cn/en/docs/getting-started/)来做类型检查。我放弃了，暂时还是复制 react 脚手架的 eslint 和 ts 配置吧~~
 3. ~~用 ejs 模版？~~
+4. mdxeditor 样式是乱的 【先去掉该组件】
+5. 打包出来的文件大小非常大
+6. 打包速度很慢
 
 ## todo list
 

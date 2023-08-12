@@ -3,6 +3,8 @@ const { merge } = require("webpack-merge");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 // const TerserPlugin = require("terser-webpack-plugin");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = merge(common, {
   devtool: "hidden-source-map",
@@ -10,7 +12,12 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.(scss|css)$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "postcss-loader",
+          "sass-loader",
+        ],
       },
     ],
   },
@@ -19,6 +26,8 @@ module.exports = merge(common, {
     splitChunks: { chunks: "all" }, // 开启切片，此时输出文件名应该配置成动态的文件名
   },
   plugins: [
+    new CleanWebpackPlugin(),
+    new BundleAnalyzerPlugin({ analyzerMode: "static", analyzerPort: "auto" }),
     new MiniCssExtractPlugin({
       filename: "[name]-[contenthash:8].css",
       chunkFilename: "[id].css",

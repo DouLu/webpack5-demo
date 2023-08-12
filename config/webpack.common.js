@@ -1,7 +1,5 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 module.exports = {
   entry: path.resolve(__dirname, "../src/index"),
@@ -17,11 +15,26 @@ module.exports = {
     rules: [
       {
         test: /\.(css|scss)$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
-      },
-      {
-        test: /\.(js|jsx|tsx|ts)$/,
         exclude: /node_modules/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+        // use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
+      },
+      // {
+      //   test: /\.css$/,
+      //   include: /node_modules/,
+      //   use: ["style-loader", "css-loader", "postcss-loader"],
+      // },
+      // {
+      //   test: /\.m?js/,
+      //   resolve: {
+      //     // 不需要强制编写扩展名
+      //     fullySpecified: false, // https://webpack.docschina.org/api/module-methods/#root
+      //   },
+      // },
+      {
+        test: /\.(js|mjs|jsx|tsx|ts)$/,
+        exclude: /node_modules/,
+        // include: path.resolve(__dirname, "../src"),
         use: {
           loader: "babel-loader",
           options: {
@@ -30,7 +43,7 @@ module.exports = {
               [
                 "@babel/preset-react",
                 {
-                  runtime: "automatic", // 给jsx文件自动引入React
+                  runtime: "automatic", // 给jsx/tsx文件自动引入React
                 },
               ],
               "@babel/preset-typescript",
@@ -42,8 +55,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(),
-    new BundleAnalyzerPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "../public/index.html"),
     }),
