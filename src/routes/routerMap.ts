@@ -29,7 +29,7 @@ const MENU_ROUTERS: MenuRouterProps[] = [
 
 const getMenuItems = (
   routers: MenuRouterProps[],
-  renderLabel?: (router: { path: string; title: string }) => React.ReactElement
+  renderLabel?: (router: { path: string; title: string }) => React.ReactElement,
 ): any[] => {
   return routers.map(({ title, path, children }) => {
     if (children?.length) {

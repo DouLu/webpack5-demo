@@ -98,10 +98,7 @@ export default function Todo() {
                         setOpen(true);
                         break;
                       case "delete":
-                        deleteTodoColums(
-                          id,
-                          items?.map((i) => i.id)
-                        );
+                        deleteTodoColums(id, items?.map((i) => i.id));
                         getUnionList();
                         break;
                       default:

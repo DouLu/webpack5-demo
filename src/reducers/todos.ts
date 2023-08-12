@@ -30,7 +30,7 @@ const todoReducer = (
       | "set_column_list"
       | "set_todo_list";
     payload: any;
-  }
+  },
 ) => {
   const { type, payload } = action;
   switch (type) {

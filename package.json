@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "webpack serve --config ./config/webpack.dev.js",
     "build": "webpack --config ./config/webpack.prod.js",
-    "serve": "npx json-server --port 8080 --routes ./mock/routes.json --watch ./mock/data.json"
+    "serve": "npx json-server --port 8080 --routes ./mock/routes.json --watch ./mock/data.json",
+    "lint": "eslint src --fix --ext .ts,.tsx"
   },
   "dependencies": {
     "@ant-design/icons": "^5.1.4",

@@ -13,7 +13,7 @@ export default function useReducerTodos(
       | "set_todo_list"
       | "set_column_list";
     payload: any;
-  }>
+  }>,
 ) {
   const handleColumnModal = (payload: boolean) =>
     dispatch({ type: "set_column_modal_open", payload });
@@ -57,12 +57,12 @@ export default function useReducerTodos(
 
   const handleDeleteColumn = async (
     id: number,
-    todoItems?: TodoItemType[] | null
+    todoItems?: TodoItemType[] | null,
   ) => {
     if (todoItems?.length) {
       if (
         await Promise.all(
-          todoItems.map((i) => doRequest("todoList/" + i.id, "DELETE"))
+          todoItems.map((i) => doRequest("todoList/" + i.id, "DELETE")),
         )
       ) {
         deleteColumn(id);

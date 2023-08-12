@@ -5,7 +5,7 @@ import { doRequest, methodType } from "../utils/request";
 export default function useRequest(
   url: string,
   method: methodType,
-  initialParams?: any
+  initialParams?: any,
 ) {
   const [data, setData] = useState();
   const run = async (params?: any) => {

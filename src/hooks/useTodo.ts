@@ -13,7 +13,7 @@ export default function useTodo() {
   const setUnionList = ([columnList, todoList]) => {
     const unionList = (columnList as ColumsType[]).map((c) => {
       const items = (todoList as TodoItemType[]).filter(
-        (t) => t.categoryId === c.id
+        (t) => t.categoryId === c.id,
       );
       return { ...c, items };
     });

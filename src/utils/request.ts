@@ -7,7 +7,7 @@ export function doRequest(
   url: string,
   method: methodType,
   params?: any,
-  delay?: boolean
+  delay?: boolean,
 ) {
   const bodyParmas =
     method === "DELETE" ? {} : { body: JSON.stringify(params) };
@@ -35,7 +35,7 @@ export function doRequest(
       console.log(
         "%c [ err ]-22",
         "font-size:13px; background:pink; color:#bf2c9f;",
-        err
+        err,
       );
     });
 }
@@ -46,7 +46,7 @@ export async function asyncRequest(
   options?: {
     params?: any;
     delay?: boolean;
-  }
+  },
 ) {
   if (options?.delay) await sleep();
 

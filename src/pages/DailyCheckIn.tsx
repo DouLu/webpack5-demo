@@ -39,9 +39,8 @@ export default function DailyCheckIn() {
     checkedInList.map((c) => c.date).some((d) => d && date.isSame(d, "day"));
 
   const cellRender = (current: Dayjs, info: CellRenderInfo<Dayjs>) => {
-    const doneList = checkedInList.find((c) =>
-      current.isSame(c.date, "day")
-    )?.doneList;
+    const doneList = checkedInList.find((c) => current.isSame(c.date, "day"))
+      ?.doneList;
 
     if (verifyExistence(current)) {
       return (
@@ -92,7 +91,7 @@ export default function DailyCheckIn() {
   };
 
   const todayChecked = checkedInList.some(
-    (r) => r.date === dayjs().format(DATE_FORMATER)
+    (r) => r.date === dayjs().format(DATE_FORMATER),
   );
   return (
     <div>

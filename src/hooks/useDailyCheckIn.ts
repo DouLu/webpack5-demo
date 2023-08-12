@@ -40,7 +40,7 @@ export default function useDailyCheckIn() {
       });
   };
 
-  const postCheckIn = (data: CheckInType | {}, callBack: () => void) => {
+  const postCheckIn = (data: CheckInType, callBack: () => void) => {
     fetch(API_HOST + "checkIn", {
       method: "POST",
       headers: {
@@ -57,7 +57,7 @@ export default function useDailyCheckIn() {
       });
   };
 
-  const patchRandom = (data: CheckInType | {}, callBack?: () => void) => {
+  const patchRandom = (data: CheckInType, callBack?: () => void) => {
     fetch(API_HOST + "randomQuotes", {
       method: "PATCH",
       headers: {
@@ -79,7 +79,7 @@ export default function useDailyCheckIn() {
   };
 
   const checked = checkedInList.some(
-    (r) => r.date && r.date === checkInData?.date
+    (r) => r.date && r.date === checkInData?.date,
   );
 
   return {
