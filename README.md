@@ -16,8 +16,8 @@ learning webpack5
 - webpack 配置 ✅
 - babel 配置 ✅
 - 升级为 typescript，并配置 ts 语法规则校验 ✅
-- [eslint](https://zh-hans.eslint.org/docs/latest/use/getting-started) 配置
-- [] prettier 配置
+- [eslint](https://zh-hans.eslint.org/docs/latest/use/getting-started) 配置 ✅
+- prettier 配置 ✅
 - [] commit husky 配置
 - [] 添加测试
 - [] 设计一个 npm 包，开发、发布到 [npm](https://npm.nodejs.cn/about-npm) 上

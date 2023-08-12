@@ -1,5 +1,9 @@
 {
   "root": true,
+  "env": {
+    "browser": true,
+    "es6": true
+  },
   // 使用 @typescript-eslint/parser 作为解析器，该解析器能够识别 TS 语法，结合特定的 plugin 就能实现 TS 规范化。
   "parser": "@typescript-eslint/parser",
   // ESLint 的核心在于 parser 和 plugin，一个负责将当前代码解析为 AST，一个负责在 AST 的基础上生成规则。
@@ -8,9 +12,11 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "react-app"
+    "react-app",
+    "plugin:prettier/recommended"
   ],
   "rules": {
+    "prettier/prettier": "error",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/ban-ts-comment": "off"
   }
