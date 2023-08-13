@@ -1,6 +1,7 @@
 {
   "name": "webpack-demo",
   "version": "1.0.0",
+  "homepage": "https://doulu.github.io/webpack5-demo/",
   "main": "index.js",
   "repository": "git@github.com:DouLu/webpack5-demo.git",
   "author": "DouLu <luckyludou@gmail.com>",
