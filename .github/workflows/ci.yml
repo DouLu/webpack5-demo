@@ -14,5 +14,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.4.3
         env:
           BRANCH: main
-          FOLDER: dist
+          FOLDER: build
           BUILD_SCRIPT: npm install && npm run build
